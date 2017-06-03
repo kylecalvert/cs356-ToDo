@@ -13,6 +13,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // user-selected task row index
     static var selected : Int?
+    // edit view check
+    static var isEditing = false
     
     // set view context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -67,6 +69,9 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         fetchTasks()
         tasksTableView.reloadData()
+        
+        // reset isEditing
+        TasksViewController.isEditing = false
     }
     
     func longPressed(recognizer: UILongPressGestureRecognizer) {
@@ -98,7 +103,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     //little helper function for marking task complete
-    //repeated code from below function
     func markCompleted(at index: Int) {
         let list = TheList.shared.lists[ListsViewController.selected!]
         let task = TheList.shared.tasks[list]?[index]
@@ -111,31 +115,21 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             //apply text modifications
             task?.isCompleted = true
         }
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        fetchTasks()
         
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        fetchTasks()
         tasksTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let list = TheList.shared.lists[ListsViewController.selected!]
-        let task = TheList.shared.tasks[list]?[indexPath.row]
-        
-        // toggle isCompleted on selecting tasks
-        if (task?.isCompleted)! {
-            //undo whatever text modifications
-            task?.isCompleted = false
-        } else {
-            //apply text modifications
-            task?.isCompleted = true
-        }
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        fetchTasks()
-        
-        tableView.reloadData()
-        
-        // set selected task
+        // set properties
         TasksViewController.selected = indexPath.row
+        TasksViewController.isEditing = true
+        
+        // perform segue for editing
+        performSegue(withIdentifier: "addTaskSegue", sender: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

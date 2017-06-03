@@ -52,17 +52,22 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         // add observer
         NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         
-        // TODO: check if editing
+        if !TasksViewController.isEditing {
+            // set focus
+            taskInputField.becomeFirstResponder()
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if TasksViewController.isEditing {
             // current task in text field
             taskInputField.text = TheList.shared.getTaskName()
-        } else {
-            // set focus
-            taskInputField.becomeFirstResponder()
-            
-            // disable edit functionality
+            // enable done with no changes
+            taskDoneButton.isEnabled = true
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
