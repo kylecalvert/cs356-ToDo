@@ -40,17 +40,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         performSegue(withIdentifier: "addTaskSegue", sender: nil)
     }
     
-    @IBAction func addEditButton(_ sender: UIBarButtonItem) {
-        if !self.tasksTableView.isEditing {
-            self.tasksTableView.isEditing = true
-            navigationItem.rightBarButtonItems?[1].title = "Done"
-        } else {
-            self.tasksTableView.isEditing = false
-            navigationItem.rightBarButtonItems?[1].title = "Edit"
-        }
-        // TODO: can remove
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,8 +50,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tasksTableView.delegate = self
         tasksTableView.dataSource = self
         
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTaskButton)),
-                                              UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addEditButton))] // TODO: can remove
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTaskButton))]
     }
     
     override func viewWillAppear(_ animated: Bool) {

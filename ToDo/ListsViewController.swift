@@ -31,25 +31,13 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         performSegue(withIdentifier: "addListSegue", sender: nil)
     }
     
-    @IBAction func addEditButton(_ sender: UIBarButtonItem) {
-        if !self.listTableView.isEditing {
-            self.listTableView.isEditing = true
-            navigationItem.rightBarButtonItems?[1].title = "Done"
-        } else {
-            self.listTableView.isEditing = false
-            navigationItem.rightBarButtonItems?[1].title = "Edit"
-        }
-        // TODO: can remove
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         listTableView.delegate = self
         listTableView.dataSource = self
         
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addListButton)),
-                                              UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(addEditButton))] // TODO: can remove
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addListButton))]
         
     }
     
