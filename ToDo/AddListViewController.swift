@@ -14,12 +14,21 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var newListTextField: UITextField!
     @IBOutlet weak var newListDoneButton: UIButton!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBAction func newListDoneButton(_ sender: UIButton) {
+        
+        
+        if ListsViewController.isEditing {
+            //edit current list
+            TheList.shared.renameList(name: newListTextField.text!)
+        } else {
+            let list = List(context: context)
+            list.name = newListTextField.text!
+        }
         //TheList.shared.addList(newListTextField.text!)
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let list = List(context: context)
-        list.name = newListTextField.text!
+        
+        
         
         // save
         (UIApplication.shared.delegate as! AppDelegate).saveContext()

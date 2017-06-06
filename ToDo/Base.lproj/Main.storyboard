@@ -140,11 +140,9 @@
                     <connections>
                         <outlet property="taskDoneButton" destination="949-Mp-uFd" id="oeP-qe-zJE"/>
                         <outlet property="taskInputField" destination="aCm-Mu-p9u" id="Kkw-yI-hvI"/>
-                        <segue destination="ypX-An-TdK" kind="unwind" identifier="tasksUnwindSegue" unwindAction="unwindToTasksViewWithSegue:" id="CJ3-8K-6j6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pk-vf-NNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="ypX-An-TdK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1701.5999999999999" y="722.78860569715152"/>
         </scene>
@@ -200,11 +198,9 @@
                         <outlet property="newListDoneButton" destination="hMc-uc-21p" id="WX0-Ou-7zT"/>
                         <outlet property="newListTextField" destination="Ihx-Js-NOp" id="yu1-KJ-T5P"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="newListDoneSegue" id="shZ-iO-bws"/>
-                        <segue destination="kg0-a6-R3d" kind="unwind" identifier="newListUnwind" unwindAction="unwindToListsViewWithSegue:" id="rfK-O4-3yY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdG-mo-3LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="kg0-a6-R3d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2457" y="49"/>
         </scene>

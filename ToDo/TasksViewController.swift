@@ -62,11 +62,17 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         TasksViewController.isEditing = false
     }
     
+    //online
     func longPressed(recognizer: UILongPressGestureRecognizer) {
         if recognizer.state == UIGestureRecognizerState.ended {
             let locationTapped = recognizer.location(in: self.tasksTableView)
             if let tappedIndex = self.tasksTableView.indexPathForRow(at: locationTapped) {
-                markCompleted(at: tappedIndex.row)
+                // set properties
+                TasksViewController.selected = tappedIndex.row
+                TasksViewController.isEditing = true
+                
+                // perform segue for editing
+                performSegue(withIdentifier: "addTaskSegue", sender: nil)
             }
         }
     }
@@ -111,12 +117,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // set properties
-        TasksViewController.selected = indexPath.row
-        TasksViewController.isEditing = true
-        
-        // perform segue for editing
-        performSegue(withIdentifier: "addTaskSegue", sender: nil)
+        markCompleted(at: indexPath.row)
         
     }
     

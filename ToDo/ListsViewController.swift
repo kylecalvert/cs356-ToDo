@@ -37,6 +37,10 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //long-press gesture stuff
+        let longPressedRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(TasksViewController.longPressed))
+        self.listTableView.addGestureRecognizer(longPressedRecognizer)
+        
         listTableView.delegate = self
         listTableView.dataSource = self
         
@@ -51,6 +55,22 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // reset isEditing
         ListsViewController.isEditing = false
+    }
+    
+    //online
+    func longPressed(recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == UIGestureRecognizerState.ended {
+            let locationTapped = recognizer.location(in: self.listTableView)
+            if let tappedIndex = self.listTableView.indexPathForRow(at: locationTapped) {
+                //go into edit for tapped index
+                // set properties
+                ListsViewController.selected = tappedIndex.row
+                ListsViewController.isEditing = true
+                
+                // perform segue for editing
+                performSegue(withIdentifier: "addListSegue", sender: nil)
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

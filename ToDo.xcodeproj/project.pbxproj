@@ -34,6 +34,7 @@
 		4AE3E3551EE214B20090D6E7 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		4AF09B4F1ECE59540073214B /* AddListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		4AF09B511ECE5DC60073214B /* TheList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheList.swift; sourceTree = "<group>"; };
+		9445BE081EE729560005D54F /* ToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		4AE0C4961ECE49B100B68941 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				9445BE081EE729560005D54F /* ToDo.entitlements */,
 				4AE0C4971ECE49B100B68941 /* AppDelegate.swift */,
 				4AF09B511ECE5DC60073214B /* TheList.swift */,
 				4AE3E3551EE214B20090D6E7 /* ViewControllerExtension.swift */,
@@ -114,7 +116,13 @@
 				TargetAttributes = {
 					4AE0C4931ECE49B100B68941 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MHHLZ6U8L2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -284,6 +292,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ToDo/ToDo.entitlements;
+				DEVELOPMENT_TEAM = MHHLZ6U8L2;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -297,6 +307,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ToDo/ToDo.entitlements;
+				DEVELOPMENT_TEAM = MHHLZ6U8L2;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
