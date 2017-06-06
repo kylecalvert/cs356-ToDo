@@ -17,6 +17,11 @@ class TheList {
     var lists: [List] = []
     var tasks: [List : [Task]] = [:]
     
+    func getListName() -> String {
+        getList()
+        return TheList.curList?.name ?? "Unnamed List"
+    }
+    
     func renameList(name: String) {
         getList()
         TheList.curList!.name = name
@@ -28,7 +33,7 @@ class TheList {
     
     func getTaskName() -> String {
         getTasks()
-        return TheList.curTasks?[TasksViewController.selected!].name ?? ""
+        return TheList.curTasks?[TasksViewController.selected!].name ?? "Unnamed Task"
     }
     
     func renameTask(to name: String) {

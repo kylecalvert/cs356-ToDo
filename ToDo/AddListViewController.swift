@@ -41,11 +41,27 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newListTextField.delegate = self
         
         // add observer
         NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         
-        newListTextField.delegate = self
+        if !ListsViewController.isEditing {
+            // set focus
+            newListTextField.becomeFirstResponder()
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if ListsViewController.isEditing {
+            // current list in text field
+            newListTextField.text = TheList.shared.getListName()
+            // enable done with no changes
+            newListDoneButton.isEnabled = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

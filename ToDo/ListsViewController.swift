@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // user-selected list row index
     static var selected : Int?
+    // edit view check
+    static var isEditing = false
     
     // set view context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -45,6 +48,9 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidAppear(animated)
         fetchLists()
         listTableView.reloadData()
+        
+        // reset isEditing
+        ListsViewController.isEditing = false
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
