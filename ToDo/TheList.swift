@@ -17,19 +17,6 @@ class TheList {
     var lists: [List] = []
     var tasks: [List : [Task]] = [:]
     
-    // list functions
-    func addList(_ name : String) {
-        let newList = List()
-        newList.name = name
-        lists.append(newList)
-    }
-    
-    func removeList() {
-        getList()
-        tasks.removeValue(forKey: TheList.curList!)
-        lists.remove(at: ListsViewController.selected!)
-    }
-    
     func renameList(name: String) {
         getList()
         TheList.curList!.name = name
@@ -37,19 +24,6 @@ class TheList {
     
     func getCount() -> Int {
         return lists.count
-    }
-    
-    // task functions
-    func addTask(_ name: String, to list: List) {
-        getTasks()
-        let newTask = Task()
-        newTask.name = name
-        TheList.curTasks!.append(newTask)
-    }
-    
-    func removeTask() {
-        getTasks()
-        TheList.curTasks?.remove(at: TasksViewController.selected!)
     }
     
     func getTaskName() -> String {
