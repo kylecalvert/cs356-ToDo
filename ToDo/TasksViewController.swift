@@ -11,6 +11,7 @@ import CoreData
 
 class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
+    static let completedAlpha: CGFloat = 0.35
     // user-selected task row index
     static var selected : Int?
     // edit view check
@@ -25,9 +26,9 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let list = TheList.shared.lists[ListsViewController.selected!]
         fetchRequest.predicate = NSPredicate(format: "list == %@", list)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "isCompleted", ascending: true)]
-        //let list = List(context: context)
+        
         do {
-            //TheList.shared.tasks[list] = try context.fetch(Task.fetchRequest())
+            
             TheList.shared.tasks[list] = try context.fetch(fetchRequest) as? [Task]
         } catch {
             print("Error: Task fetch failed.")
@@ -55,6 +56,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         fetchTasks()
         tasksTableView.reloadData()
         
@@ -64,7 +66,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //online
     func longPressed(recognizer: UILongPressGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.ended {
+        if recognizer.state == UIGestureRecognizerState.began {
             let locationTapped = recognizer.location(in: self.tasksTableView)
             if let tappedIndex = self.tasksTableView.indexPathForRow(at: locationTapped) {
                 // set properties
@@ -84,12 +86,12 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let list = TheList.shared.lists[ListsViewController.selected!]
-        //let list = List(context: context)
         let task = TheList.shared.tasks[list]?[indexPath.row]
+        cell.contentView.backgroundColor = TheList.getColor(at: Int(list.colorIndex))
         
         cell.textLabel?.text = task?.name
         if (task?.isCompleted)! {
-            cell.textLabel?.alpha = 0.5
+            cell.textLabel?.alpha = TasksViewController.completedAlpha
         } else {
             cell.textLabel?.alpha = 1.0
         }

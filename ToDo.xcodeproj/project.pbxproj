@@ -15,7 +15,6 @@
 		4AE0C49D1ECE49B100B68941 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0C49B1ECE49B100B68941 /* Main.storyboard */; };
 		4AE0C4A21ECE49B100B68941 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0C4A11ECE49B100B68941 /* Assets.xcassets */; };
 		4AE0C4A51ECE49B100B68941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0C4A31ECE49B100B68941 /* LaunchScreen.storyboard */; };
-		4AE3E3561EE214B20090D6E7 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE3E3551EE214B20090D6E7 /* ViewControllerExtension.swift */; };
 		4AF09B501ECE59540073214B /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF09B4F1ECE59540073214B /* AddListViewController.swift */; };
 		4AF09B521ECE5DC60073214B /* TheList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF09B511ECE5DC60073214B /* TheList.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		4AE0C4A11ECE49B100B68941 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AE0C4A41ECE49B100B68941 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AE0C4A61ECE49B100B68941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4AE3E3551EE214B20090D6E7 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		4AF09B4F1ECE59540073214B /* AddListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		4AF09B511ECE5DC60073214B /* TheList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheList.swift; sourceTree = "<group>"; };
 		9445BE081EE729560005D54F /* ToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDo.entitlements; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 				9445BE081EE729560005D54F /* ToDo.entitlements */,
 				4AE0C4971ECE49B100B68941 /* AppDelegate.swift */,
 				4AF09B511ECE5DC60073214B /* TheList.swift */,
-				4AE3E3551EE214B20090D6E7 /* ViewControllerExtension.swift */,
 				4AE0C4991ECE49B100B68941 /* ListsViewController.swift */,
 				4AF09B4F1ECE59540073214B /* AddListViewController.swift */,
 				4A0491A61ECE7051006F22A2 /* TasksViewController.swift */,
@@ -166,7 +163,6 @@
 				4A0491A71ECE7051006F22A2 /* TasksViewController.swift in Sources */,
 				4AF09B521ECE5DC60073214B /* TheList.swift in Sources */,
 				4AE0C49A1ECE49B100B68941 /* ListsViewController.swift in Sources */,
-				4AE3E3561EE214B20090D6E7 /* ViewControllerExtension.swift in Sources */,
 				4A2099EC1EDF81C9006F8860 /* ToDo.xcdatamodeld in Sources */,
 				4A0491A91ECE815C006F22A2 /* AddTaskViewController.swift in Sources */,
 				4AE0C4981ECE49B100B68941 /* AppDelegate.swift in Sources */,

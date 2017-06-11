@@ -16,6 +16,8 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // edit view check
     static var isEditing = false
     
+    @IBOutlet weak var listTableView: UITableView!
+    
     // set view context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -27,8 +29,6 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print("Error: List fetch failed.")
         }
     }
-    
-    @IBOutlet weak var listTableView: UITableView!
     
     @IBAction func addListButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addListSegue", sender: nil)
@@ -49,7 +49,8 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
+
         fetchLists()
         listTableView.reloadData()
         
@@ -59,7 +60,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //online
     func longPressed(recognizer: UILongPressGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.ended {
+        if recognizer.state == UIGestureRecognizerState.began {
             let locationTapped = recognizer.location(in: self.listTableView)
             if let tappedIndex = self.listTableView.indexPathForRow(at: locationTapped) {
                 //go into edit for tapped index
@@ -88,6 +89,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell()
         let list = TheList.shared.lists[indexPath.row]
         cell.textLabel?.text = list.name
+        cell.contentView.backgroundColor = TheList.getColor(at: Int(list.colorIndex))
         
         return cell
     }

@@ -61,7 +61,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if TasksViewController.isEditing {
             // current task in text field
             taskInputField.text = TheList.shared.getTaskName()

@@ -11,52 +11,89 @@ import CoreData
 
 class TheList {
     static let shared = TheList()
-    static var curList: List?
-    static var curTasks: [Task]?
-        
+    
     var lists: [List] = []
     var tasks: [List : [Task]] = [:]
     
+    // List functions
+    
+    func getList() -> List {
+        return lists[ListsViewController.selected!]
+    }
+    
     func getListName() -> String {
-        getList()
-        return TheList.curList?.name ?? "Unnamed List"
+        return getList().name ?? "Unnamed List"
     }
     
     func renameList(name: String) {
-        getList()
-        TheList.curList!.name = name
+        getList().name = name
     }
     
     func getCount() -> Int {
         return lists.count
     }
     
+    // Task functions
+    
+    func getTasks() -> [Task] {
+        return tasks[getList()]!
+    }
+    
     func getTaskName() -> String {
-        getTasks()
-        return TheList.curTasks?[TasksViewController.selected!].name ?? "Unnamed Task"
+        return getTasks()[TasksViewController.selected!].name ?? "Unnamed Task"
+    }
+    
+    func setReminder(to date: Date) {
+        getTasks()[TasksViewController.selected!].reminder = date as NSDate
+    }
+    
+    func getReminder() -> String {
+        //return getTasks()[TasksViewController.selected!].reminder? ?? "None"
+        if let reminder = getTasks()[TasksViewController.selected!].reminder {
+            return DateFormatter.localizedString(from: reminder as Date, dateStyle: .short, timeStyle: .short)
+        } else {
+            return "None"
+        }
+    }
+    
+    // force unwraps, check before calling
+    func getReminderDate() -> Date {
+        return getTasks()[TasksViewController.selected!].reminder! as Date
+    }
+    
+    func isReminderSet() -> Bool {
+        return getTasks()[TasksViewController.selected!].reminder != nil
     }
     
     func renameTask(to name: String) {
-        getTasks()
-        let task = TheList.curTasks![TasksViewController.selected!]
-        task.name = name
+        getTasks()[TasksViewController.selected!].name = name
     }
     
     func getCountTasks() -> Int {
-        getTasks()
-        return TheList.curTasks!.count
+        return getTasks().count
     }
     
+    //color stuff
+    static let colors = [(UIColor(red: 175/255, green: 172/255, blue: 159/255, alpha: 1.0), "Slate"),
+                      (UIColor(red: 226/255, green: 233/255, blue: 16/255, alpha: 1.0), "Sunbeam"),
+                      (UIColor(red: 172/255, green: 145/255, blue: 176/255, alpha: 1.0), "Mauve"),
+					  (UIColor(red: 122/255, green: 208/255, blue: 95/255, alpha: 1.0), "Grass"),
+					  (UIColor(red: 224/255, green: 159/255, blue: 15/255, alpha: 1.0), "Carrot"),
+					  (UIColor(red: 111/255, green: 175/255, blue: 199/255, alpha: 1.0), "Robin Egg")]
     
-    // helper functions to set current list and tasks array
-    private func getList() {
-        TheList.curList = lists[ListsViewController.selected!]
+    static func getColor(at index: Int) -> UIColor {
+        return TheList.colors[index].0
     }
     
-    private func getTasks() {
-        getList()
-        TheList.curTasks = tasks[TheList.curList!]!
+    static func getColorName(at index: Int) -> String {
+        return TheList.colors[index].1
     }
     
+    func changeColor(to cIndex: Int) {
+        self.getList().colorIndex = Int32(cIndex)
+    }
+    
+    func getColorIndex() -> Int {
+        return Int(self.getList().colorIndex)
+    }
 }
-
