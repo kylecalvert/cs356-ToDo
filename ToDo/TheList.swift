@@ -81,19 +81,19 @@ class TheList {
 					  (UIColor(red: 224/255, green: 159/255, blue: 15/255, alpha: 1.0), "Carrot"),
 					  (UIColor(red: 111/255, green: 175/255, blue: 199/255, alpha: 1.0), "Robin Egg")]
     
-    static func getColor(at index: Int) -> UIColor {
+    func getColor(at index: Int) -> UIColor {
         return TheList.colors[index].0
     }
     
-    static func getColorName(at index: Int) -> String {
+    func getColorName(at index: Int) -> String {
         return TheList.colors[index].1
     }
     
     func changeColor(to cIndex: Int) {
-        self.getList().colorIndex = Int32(cIndex)
+        getList().colorIndex = Int32(cIndex)
     }
     
     func getColorIndex() -> Int {
-        return Int(self.getList().colorIndex)
+        return Int(getList().colorIndex)
     }
 }

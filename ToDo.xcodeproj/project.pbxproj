@@ -10,6 +10,8 @@
 		4A0491A71ECE7051006F22A2 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0491A61ECE7051006F22A2 /* TasksViewController.swift */; };
 		4A0491A91ECE815C006F22A2 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0491A81ECE815C006F22A2 /* AddTaskViewController.swift */; };
 		4A2099EC1EDF81C9006F8860 /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A2099EA1EDF81C9006F8860 /* ToDo.xcdatamodeld */; };
+		4AADD9111EEE0F3D00F68284 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AADD9101EEE0F3D00F68284 /* ReminderViewController.swift */; };
+		4AADD9131EEE176C00F68284 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AADD9121EEE176C00F68284 /* ColorViewController.swift */; };
 		4AE0C4981ECE49B100B68941 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0C4971ECE49B100B68941 /* AppDelegate.swift */; };
 		4AE0C49A1ECE49B100B68941 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0C4991ECE49B100B68941 /* ListsViewController.swift */; };
 		4AE0C49D1ECE49B100B68941 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0C49B1ECE49B100B68941 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		4A0491A61ECE7051006F22A2 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		4A0491A81ECE815C006F22A2 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		4A2099EB1EDF81C9006F8860 /* ToDo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDo.xcdatamodel; sourceTree = "<group>"; };
+		4AADD9101EEE0F3D00F68284 /* ReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		4AADD9121EEE176C00F68284 /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		4AE0C4941ECE49B100B68941 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE0C4971ECE49B100B68941 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AE0C4991ECE49B100B68941 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
@@ -70,8 +74,10 @@
 				4AF09B511ECE5DC60073214B /* TheList.swift */,
 				4AE0C4991ECE49B100B68941 /* ListsViewController.swift */,
 				4AF09B4F1ECE59540073214B /* AddListViewController.swift */,
+				4AADD9121EEE176C00F68284 /* ColorViewController.swift */,
 				4A0491A61ECE7051006F22A2 /* TasksViewController.swift */,
 				4A0491A81ECE815C006F22A2 /* AddTaskViewController.swift */,
+				4AADD9101EEE0F3D00F68284 /* ReminderViewController.swift */,
 				4AE0C49B1ECE49B100B68941 /* Main.storyboard */,
 				4AE0C4A31ECE49B100B68941 /* LaunchScreen.storyboard */,
 				4A2099EA1EDF81C9006F8860 /* ToDo.xcdatamodeld */,
@@ -163,8 +169,10 @@
 				4A0491A71ECE7051006F22A2 /* TasksViewController.swift in Sources */,
 				4AF09B521ECE5DC60073214B /* TheList.swift in Sources */,
 				4AE0C49A1ECE49B100B68941 /* ListsViewController.swift in Sources */,
+				4AADD9111EEE0F3D00F68284 /* ReminderViewController.swift in Sources */,
 				4A2099EC1EDF81C9006F8860 /* ToDo.xcdatamodeld in Sources */,
 				4A0491A91ECE815C006F22A2 /* AddTaskViewController.swift in Sources */,
+				4AADD9131EEE176C00F68284 /* ColorViewController.swift in Sources */,
 				4AE0C4981ECE49B100B68941 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

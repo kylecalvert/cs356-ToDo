@@ -89,7 +89,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell()
         let list = TheList.shared.lists[indexPath.row]
         cell.textLabel?.text = list.name
-        cell.contentView.backgroundColor = TheList.getColor(at: Int(list.colorIndex))
+        cell.contentView.backgroundColor = TheList.shared.getColor(at: Int(list.colorIndex))
         
         return cell
     }

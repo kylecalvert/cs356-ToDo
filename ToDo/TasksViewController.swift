@@ -87,7 +87,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell()
         let list = TheList.shared.lists[ListsViewController.selected!]
         let task = TheList.shared.tasks[list]?[indexPath.row]
-        cell.contentView.backgroundColor = TheList.getColor(at: Int(list.colorIndex))
+        cell.contentView.backgroundColor = TheList.shared.getColor(at: Int(list.colorIndex))
         
         cell.textLabel?.text = task?.name
         if (task?.isCompleted)! {

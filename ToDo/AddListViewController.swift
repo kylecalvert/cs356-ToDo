@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class AddListViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddListViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var colorPickerUIView: UIView!
-    @IBOutlet weak var colorPicker: UIPickerView!
+    @IBOutlet weak var listStatusLabel: UILabel!
     @IBOutlet weak var newListTextField: UITextField!
     @IBOutlet weak var newListDoneButton: UIButton!
     @IBOutlet weak var listColorButton: UIButton!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     static var selectedColor = 0
@@ -38,12 +38,6 @@ class AddListViewController: UIViewController, UITextFieldDelegate, UIPickerView
         let _ = navigationController?.popViewController(animated: true)
     }
     
-    //user pressed
-    @IBAction func listColorButtonPressed(_ sender: UIButton) {
-        //bring up a picker view with color choices
-        colorPickerUIView.isHidden = false
-    }
-    
     func toggleDone() {
         let text = newListTextField.text
         if !text!.isEmpty {
@@ -53,11 +47,13 @@ class AddListViewController: UIViewController, UITextFieldDelegate, UIPickerView
         }
     }
     
+    func updateColorButtonTitle(toIndex: Int) {
+        listColorButton.setTitle(TheList.shared.getColorName(at: toIndex), for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        colorPicker.delegate = self
         newListTextField.delegate = self
-        colorPickerUIView.isHidden = true
         
         // add observer
         NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
@@ -73,20 +69,31 @@ class AddListViewController: UIViewController, UITextFieldDelegate, UIPickerView
         super.viewWillAppear(animated)
 
         if ListsViewController.isEditing {
+            listStatusLabel.text = "Editing ToDo List"
             // current list in text field
             newListTextField.text = TheList.shared.getListName()
-            updateColorButtonTitle(toIndex: TheList.shared.getColorIndex())
-            AddListViewController.selectedColor = TheList.shared.getColorIndex()
+            // check if user set color
+            if let color = ColorViewController.color {
+                AddListViewController.selectedColor = color
+            } else {
+                AddListViewController.selectedColor = TheList.shared.getColorIndex()
+            }
             // enable done with no changes
             newListDoneButton.isEnabled = true
         } else {
+            listStatusLabel.text = "New ToDo List"
             AddListViewController.selectedColor = 0
         }
+        
+        listColorButton.setTitle(TheList.shared.getColorName(at: AddListViewController.selectedColor), for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         // call parent
         super.viewWillDisappear(animated)
+        
+        // reset color
+        ColorViewController.color = nil
         
         // turn off receiving all notifications
         NotificationCenter.default.removeObserver(self)
@@ -96,27 +103,5 @@ class AddListViewController: UIViewController, UITextFieldDelegate, UIPickerView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return TheList.colors.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        AddListViewController.selectedColor = row
-        updateColorButtonTitle(toIndex: AddListViewController.selectedColor)
-        colorPickerUIView.isHidden = true
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return TheList.colors[row].1
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func updateColorButtonTitle(toIndex: Int) {
-        listColorButton.setTitle(TheList.getColorName(at: toIndex), for: .normal)
     }
 }
