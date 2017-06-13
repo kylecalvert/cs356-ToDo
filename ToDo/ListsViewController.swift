@@ -58,7 +58,9 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         ListsViewController.isEditing = false
     }
     
-    //online
+    //found first four lines of code for this function online at
+    // stackoverflow.com/questions/37692978/how-to-add-gesture-to-uitableviewcell
+    // repeated in TasksViewController
     func longPressed(recognizer: UILongPressGestureRecognizer) {
         if recognizer.state == UIGestureRecognizerState.began {
             let locationTapped = recognizer.location(in: self.listTableView)
