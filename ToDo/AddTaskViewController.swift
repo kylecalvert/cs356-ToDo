@@ -25,16 +25,17 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         if TasksViewController.isEditing {
             // edit current task
             TheList.shared.renameTask(to: taskInputField.text!)
+            if let reminder = ReminderViewController.curReminder {
+                TheList.shared.setReminder(to: reminder)
+            }
         } else {
             // create a new task
             let task = Task(context: context)
             task.name = taskInputField.text!
             task.list = list
-        }
-        
-        if let reminder = ReminderViewController.curReminder {
-            TheList.shared.setReminder(to: reminder)
-            ReminderViewController.curReminder = nil
+            if let reminder = ReminderViewController.curReminder {
+                task.reminder = reminder as NSDate
+            }
         }
         
         // save
@@ -57,9 +58,6 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         taskInputField.delegate = self
         
-        // add observer
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
-        
         if !TasksViewController.isEditing {
             // set focus
             taskInputField.becomeFirstResponder()
@@ -69,6 +67,9 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // add observer
+        NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         
         if let reminder = ReminderViewController.curReminder {
             date = DateFormatter.localizedString(from: reminder, dateStyle: .short, timeStyle: .short)
