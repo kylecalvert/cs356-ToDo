@@ -320,16 +320,19 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saD-eL-EtK">
-                                <rect key="frame" x="212" y="337" width="48" height="30"/>
+                                <rect key="frame" x="190" y="337" width="169" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="169" id="fbL-HN-ffI"/>
+                                </constraints>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelColorButton:" destination="GlY-TQ-5HV" eventType="touchUpInside" id="x0O-KI-qJF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tY2-Dt-zVj">
-                                <rect key="frame" x="119" y="337" width="46" height="30"/>
+                                <rect key="frame" x="16" y="337" width="188" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="ivS-at-Ctq"/>
+                                    <constraint firstAttribute="width" constant="188" id="6F7-Hk-eqK"/>
                                 </constraints>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -339,13 +342,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="saD-eL-EtK" firstAttribute="top" secondItem="rW3-Xd-aa9" secondAttribute="bottom" constant="8" symbolic="YES" id="088-DI-qsI"/>
+                            <constraint firstItem="saD-eL-EtK" firstAttribute="trailing" secondItem="rW3-Xd-aa9" secondAttribute="trailing" id="1xi-3V-6Sx"/>
                             <constraint firstItem="rW3-Xd-aa9" firstAttribute="leading" secondItem="sNL-N0-gf5" secondAttribute="leadingMargin" id="3Uq-7f-Orb"/>
+                            <constraint firstItem="saD-eL-EtK" firstAttribute="baseline" secondItem="tY2-Dt-zVj" secondAttribute="baseline" id="7EB-IF-8AZ"/>
                             <constraint firstItem="rW3-Xd-aa9" firstAttribute="top" secondItem="kdG-hp-2T3" secondAttribute="bottom" constant="93" id="EFC-aA-mBK"/>
-                            <constraint firstItem="tY2-Dt-zVj" firstAttribute="top" secondItem="rW3-Xd-aa9" secondAttribute="bottom" constant="8" symbolic="YES" id="IbK-Yr-JYa"/>
                             <constraint firstItem="rW3-Xd-aa9" firstAttribute="trailing" secondItem="sNL-N0-gf5" secondAttribute="trailingMargin" id="Tvh-Ik-SuC"/>
-                            <constraint firstItem="saD-eL-EtK" firstAttribute="leading" secondItem="tY2-Dt-zVj" secondAttribute="trailing" constant="47" id="ZSl-qO-HYb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="saD-eL-EtK" secondAttribute="trailing" constant="99" id="rK8-vr-iwN"/>
+                            <constraint firstItem="tY2-Dt-zVj" firstAttribute="leading" secondItem="rW3-Xd-aa9" secondAttribute="leading" id="Vmp-Uu-7xf"/>
+                            <constraint firstItem="saD-eL-EtK" firstAttribute="top" secondItem="rW3-Xd-aa9" secondAttribute="bottom" constant="8" symbolic="YES" id="dCr-bn-Y08"/>
+                            <constraint firstItem="tY2-Dt-zVj" firstAttribute="leading" secondItem="sNL-N0-gf5" secondAttribute="leadingMargin" id="k1M-52-bZH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -354,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vk8-7q-3g4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="36"/>
+            <point key="canvasLocation" x="2684" y="35.532233883058474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SYk-EJ-hQ9">

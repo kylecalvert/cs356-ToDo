@@ -72,6 +72,7 @@
 				9445BE081EE729560005D54F /* ToDo.entitlements */,
 				4AE0C4971ECE49B100B68941 /* AppDelegate.swift */,
 				4AF09B511ECE5DC60073214B /* TheList.swift */,
+				4A2099EA1EDF81C9006F8860 /* ToDo.xcdatamodeld */,
 				4AE0C4991ECE49B100B68941 /* ListsViewController.swift */,
 				4AF09B4F1ECE59540073214B /* AddListViewController.swift */,
 				4AADD9121EEE176C00F68284 /* ColorViewController.swift */,
@@ -80,7 +81,6 @@
 				4AADD9101EEE0F3D00F68284 /* ReminderViewController.swift */,
 				4AE0C49B1ECE49B100B68941 /* Main.storyboard */,
 				4AE0C4A31ECE49B100B68941 /* LaunchScreen.storyboard */,
-				4A2099EA1EDF81C9006F8860 /* ToDo.xcdatamodeld */,
 				4AE0C4A61ECE49B100B68941 /* Info.plist */,
 				4AE0C4A11ECE49B100B68941 /* Assets.xcassets */,
 			);

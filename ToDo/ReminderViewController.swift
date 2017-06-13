@@ -34,12 +34,14 @@ class ReminderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if TasksViewController.isEditing && TheList.shared.isReminderSet() {
-            // set DatePicker to current task reminder
-            ReminderViewController.curReminder = TheList.shared.getReminderDate()
-            reminderDatePicker.date = ReminderViewController.curReminder!
+        if let reminder = ReminderViewController.curReminder {
+            reminderDatePicker.setDate(reminder, animated: true)
         } else {
-            ReminderViewController.curReminder = nil
+            if TasksViewController.isEditing && TheList.shared.isReminderSet() {
+                // set DatePicker to current task reminder
+                ReminderViewController.curReminder = TheList.shared.getReminderDate()
+                reminderDatePicker.setDate(ReminderViewController.curReminder!, animated: true)
+            }
         }
     }
 

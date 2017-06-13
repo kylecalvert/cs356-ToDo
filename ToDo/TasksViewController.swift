@@ -64,6 +64,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // reset isEditing
         TasksViewController.isEditing = false
+        // clear reminder date
+        ReminderViewController.curReminder = nil
     }
     
     //online

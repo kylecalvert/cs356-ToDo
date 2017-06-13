@@ -96,7 +96,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         
         // clear reminder date
-        ReminderViewController.curReminder = nil
+        // ReminderViewController.curReminder = nil
         
         // turn off receiving all notifications
         NotificationCenter.default.removeObserver(self)
