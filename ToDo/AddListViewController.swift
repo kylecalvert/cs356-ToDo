@@ -48,15 +48,14 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
     }
     
     func updateColorButtonTitle(toIndex: Int) {
-        listColorButton.setTitle(TheList.shared.getColorName(at: toIndex), for: .normal)
+        listColorButton.setTitle(TheList.getColorName(at: toIndex), for: .normal)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         newListTextField.delegate = self
         
-        // add observer
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        
         
         if !ListsViewController.isEditing {
             // set focus
@@ -67,6 +66,9 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // add observer
+        NotificationCenter.default.addObserver(self, selector: #selector(toggleDone), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
 
         if ListsViewController.isEditing {
             listStatusLabel.text = "Editing ToDo List"
@@ -82,10 +84,14 @@ class AddListViewController: UIViewController, UITextFieldDelegate {
             newListDoneButton.isEnabled = true
         } else {
             listStatusLabel.text = "New ToDo List"
-            AddListViewController.selectedColor = 0
+            if let color = ColorViewController.color {
+                AddListViewController.selectedColor = color
+            } else {
+                AddListViewController.selectedColor = 0
+            }
         }
         
-        listColorButton.setTitle(TheList.shared.getColorName(at: AddListViewController.selectedColor), for: .normal)
+        listColorButton.setTitle(TheList.getColorName(at: AddListViewController.selectedColor), for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

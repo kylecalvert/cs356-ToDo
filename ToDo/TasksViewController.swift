@@ -57,6 +57,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        tasksTableView.backgroundColor = TheList.getColor(at: TheList.shared.getColorIndex())
+        
         fetchTasks()
         tasksTableView.reloadData()
         
@@ -87,7 +89,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell()
         let list = TheList.shared.lists[ListsViewController.selected!]
         let task = TheList.shared.tasks[list]?[indexPath.row]
-        cell.contentView.backgroundColor = TheList.shared.getColor(at: Int(list.colorIndex))
+        cell.contentView.backgroundColor = TheList.getColor(at: Int(list.colorIndex))
         
         cell.textLabel?.text = task?.name
         if (task?.isCompleted)! {
